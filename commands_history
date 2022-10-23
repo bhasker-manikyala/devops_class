@@ -1,0 +1,518 @@
+  211  sudo apt-get remove docker docker-engine docker.io containerd runc
+  212  sudo apt-get install     ca-certificates     curl     gnupg     lsb-release
+  213  $ sudo mkdir -p /etc/apt/keyrings
+  214  $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  215  sudo $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  216  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  217  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  218    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  219  sudo apt-get update
+  220  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  221  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  222    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  223  sudo apt-get update
+  224  sudo mkdir -p /etc/apt/keyrings
+  225  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  226  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  227    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  228  sudo apt-get update
+  229  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  230  sudo systemctl restart docker
+  231  sudo systemctl status docker
+  232  sudo usermod -aG docker edureka
+  233  id edureka
+  234  docker system info
+  235  docker image ls
+  236  docker container ls
+  237  docker network ls
+  238  docker volume ls
+  239  which docker
+  240  which dockerd
+  241  sudo systemctl status docker
+  242  pwd
+  243  mkdir images
+  244  cd images/
+  245  ls
+  246  cd
+  247  cd playbooks/
+  248  ls
+  249  cat apache.yaml 
+  250  ansible-vault decrypt apache.yaml 
+  251  pwd
+  252  ls
+  253  cat apache.yaml 
+  254  cd ..
+  255  ls
+  256  cd images/
+  257  ls
+  258  vi Dockerfile
+  259  vi index.html
+  260  vi Dockerfile 
+  261  uname -a
+  262  pwd
+  263  ls
+  264  docker image build --help
+  265  docker image build .
+  266  docker image ls
+  267  docker image history 45e26b0679b7
+  268  cat Dockerfile 
+  269  docker image --help
+  270  docker image ls
+  271  docker image history 45e26b0679b7
+  272  docker image ls
+  273  docker image tag edurekadevops/edureka-images:custom_apache 45e26b0679b7
+  274  docker image tag --help
+  275  docker image ls
+  276  docker image rm 45e26b0679b7
+  277  docker image ls
+  278  docker image build -t edurekadevops/edureka-images:custom_apache .
+  279  docker image ls
+  280  docker login
+  281  docker image push edurekadevops/edureka-images:custom_apache 
+  282  docker image rm edurekadevops/edureka-images:custom_apache 
+  283  docker image ls
+  284  docker image pull edurekadevops/edureka-images:custom_apache
+  285  docker image ls
+  286  docker image pull nginx
+  287  docker image ls
+  288  docker image push docker.io/library/nginx:latest
+  289  history
+  290  docker image tag edurekadevops/edureka-images:custom_apache edurekadevops/edureka-project:custom_apache
+  291  docker image ls
+  292  docker image push edurekadevops/edureka-project:custom_apache 
+  293  docker image rm edurekadevops/edureka-project:custom_apache 
+  294  docker image pull  nginx:1.22
+  295  docker image ls
+  296  docker image tag --help
+  297  hstory
+  298  history
+  299  pwd
+  300  ls
+  301  docker image ls
+  302  docker container run -d -p 8005:80 --name websvc edurekadevops/edureka-images:custom_apache 
+  303  docker container ls
+  304  sudo apt list --installed apache2
+  305  sudo apt-get remove apache2 -y
+  306  sudo apt list --installed apache2\
+  307  sudo apt list --installed apache2
+  308  sudo systemctl status apache2
+  309  docker container ls websvc
+  310  docker container ls 
+  311  docker container exec -it websvc bash
+  312  hostname
+  313  docker container stop websvc
+  314  docker container start websvc
+  315  pwd
+  316  ls
+  317  vi Dockerfile 
+  318  docker image build -t custom_apache_v2 .
+  319  docker image ls
+  320  docker image history custom_apache_v2:latest 
+  321  docker container run -d --name websvc1 -p 8006:80 custom_apache_v2
+  322  docker container ls
+  323  docker image ls
+  324  docker container run --name websvc3 nginx:latest
+  325  docker container run -d --name websvc3 nginx:latest
+  326  docker container run -d --name websvc4 nginx:latest
+  327  docker container logs websvc4
+  328  docker container inspect websvc4
+  329  docker container ls
+  330  docker container ls -a
+  331  docker container ls -a -f status=exited
+  332  docker container ls -a -f status=exited -f status=created
+  333  docker container ls -a | grep exited
+  334  docker container ls -a | grep -i exited
+  335  docker container ls
+  336  docker container ls | grep web
+  337  docker container ls | grep web | awk '{print $1}'
+  338  docker container ls | grep web | awk '{print $1}' | xargs docker container stop
+  339  docker container ls -a | grep web | awk '{print $1}' | xargs docker container rm
+  340  docker container ls -a -f status=exited
+  341  docker container ls -a -q -f status=exited
+  342  docker container rm $(docker container ls -a -q -f status=exited)
+  343  docker container rm `docker container ls -a -q -f status=exited`
+  344  docker image ls
+  345  docker container ls
+  346  docker container prune
+  347  docker image prune -a
+  348  docker image ls
+  349  docker container run -d --name test_cont ubuntu:18.04
+  350  docker container ls
+  351  docker container ls -a
+  352  docker container rm test_cont
+  353  docker container run -itd --name test_cont ubuntu:18.04
+  354  docker container ls
+  355  docker container exec -it test_cont uname 
+  356  docker container exec -it test_cont df
+  357  docker container exec -it test_cont free -m
+  358  docker container exec -it test_cont bash
+  359  pwd
+  360  ls
+  361  docker container stop test_cont 
+  362  docker container rm test_cont 
+  363  docker volume create data_vol
+  364  docker volume ls
+  365  docker volume inspect data_vol 
+  366  docker container run -itd --name test_cont --mount src=datavol,destination=/mnt ubuntu:18.04 
+  367  docker container exec -it test_cont bash
+  368  docker container stop test_cont 
+  369  docker container rm test_cont 
+  370  sudo su -
+  371  docker container run -itd --name cont1 --mount src=datavol,destination=/mnt ubuntu:18.04 
+  372  docker container run -itd --name cont2 --mount src=datavol,destination=/mnt ubuntu:18.04 
+  373  docker container run -itd --name cont3 --mount src=datavol,destination=/mnt ubuntu:18.04 
+  374  docker container exec -it cont3 bash
+  375  docker container exec -it cont2 bash
+  376  docker container exec -it cont1 bash
+  377  docker system info
+  378  docker volume ls
+  379  sudo su -
+  380  history
+  381  hostname
+  382  lsb_release -a
+  383  sudo apt list --installed docker-ce
+  384  sudo apt list --installed docker.io
+  385  sudo systemctl restart docker
+  386  sudo systemctl status docker
+  387  docker version
+  388  which docker
+  389  which dockerd
+  390  sudo systemctl status docker
+  391  mkdir edureka
+  392  cd edureka
+  393  vi Dockerfile
+  394  vi index.html
+  395  vi Dockerfile 
+  396  vi index.html 
+  397  pwd
+  398  ls
+  399  docker image build --help
+  400  pwd
+  401  ls
+  402  docker image build -t custom_apache .
+  403  docker image ls
+  404  cat Dockerfile 
+  405  pwd
+  406  docker image ls
+  407  docker image history custom_apache:latest 
+  408  cat Dockerfile 
+  409  docker image inspect custom_apache:latest 
+  410  pwd
+  411  ls
+  412  docker image ls
+  413  hostname
+  414  docker image pull nginx
+  415  docker image pull nginx:1.22
+  416  docker image ls
+  417  docker image tag custom_apache:latest edurekadevops/sample-repo:custom_apache
+  418  docker image ls
+  419  docker login
+  420  rm -rf /home/edureka/.docker/config.json.
+  421  docker login
+  422  docker image ls
+  423  docker image push edurekadevops/sample-repo:custom_apache 
+  424  docker image ls
+  425  docker image prune -a
+  426  docker image ls
+  427  docker image pull edurekadevops/sample-repo:custom_apache
+  428  docker image ls
+  429  vi Dockerfile 
+  430  docker container run -d --name websvc -p 8009:80 edurekadevops/sample-repo:custom_apache 
+  431  docker container ls
+  432  docker container run -d --name websvc -p 8009:80 edurekadevops/sample-repo:custom_apache 
+  433  docker container ls
+  434  cat Dockerfile 
+  435  cat index.html 
+  436  sudo systemctl status apache2
+  437  sudo apt list --installed apache2
+  438  docker image ls
+  439  cat Dockerfile 
+  440  docker image ls
+  441  docker container ls
+  442  lsb_release -a
+  443  sudo systemctl status docker
+  444  docker image ls
+  445  docker container ls
+  446  docker volume ls
+  447  docker network ls
+  448  docker container ls
+  449  docker container --help
+  450  docker container exec -it websvc uname
+  451  docker container exec -it websvc uname -p
+  452  docker container exec -it websvc free -m
+  453  docker container exec -it websvc nproc
+  454  docker container exec -it websvc bash
+  455  docker container stop websvc
+  456  docker container ls
+  457  docker container ls -a
+  458  docker container start d2a56d430dae
+  459  docker container ls
+  460  cd /var/lib/jenkins/
+  461  ls
+  462  cd workspace/
+  463  ls
+  464  cd Package/target/
+  465  ls
+  466  cp addressbook.war ~
+  467  cd
+  468  pwd
+  469  ls
+  470  mkdir tomcat
+  471  mv addressbook.war tomcat/
+  472  ls
+  473  cd tomcat/
+  474  ls
+  475  vi Dockerfile
+  476  docker image build -t edureka_demo .
+  477  docker image ls
+  478  docker container run -d --name edureka_demo -p 8090:8080 edureka_demo:latest 
+  479  pwd
+  480  ls
+  481  wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+  482  ls
+  483  vi Dockerfile 
+  484  docker image build -t edureka_demo_v1 .
+  485  docker container run -d --name edureka_demo_1 -p 8091:8080 edureka_demo_v1
+  486  docker image ls
+  487  docker image history edureka_demo:v1
+  488  docker image history edureka_demo_v1:latest 
+  489  docker image history edureka_demo
+  490  docker image history edureka_demo_v1:latest --no-trunc
+  491  docker image ls
+  492  docker container ls
+  493  docker container stop websvc edureka_demo_1 edureka_demo
+  494  docker container start websvc edureka_demo_1 edureka_demo
+  495  docker container ls | grep edureka
+  496  docker container ls | grep edureka | awk '{print $1}'
+  497  docker container ls -a
+  498  docker container ls -a -f status=exited
+  499  docker container ls -a -f status=exited -f status=created -f status=running
+  500  docker container ls -a -q -f status=exited
+  501  docker container rm $(docker container ls -a -q -f status=exited)
+  502  docker container prune
+  503  docker container ls
+  504  docker container ls -a
+  505  docker container --help
+  506  docker container ls
+  507  docker container port websvc
+  508  docker container logs websvc
+  509  docker container inspect websvc
+  510  docker container port websvc
+  511  curl 172.17.0.2:80
+  512  ifconfig ens5
+  513  curl 172.31.10.208:8009
+  514  docker container ls
+  515  docker container run --name websvc1 nginx
+  516  docker container run -d --name websvc2 nginx
+  517  docker container ls -a
+  518  docker container stop websvc1 websvc2
+  519  docker container prune
+  520  docker container ls
+  521  docker container stop websvc  edureka_demo edureka_demo_1
+  522  docker container prune 
+  523  docker container ls
+  524  kubectl get nodes
+  525  docker container ls
+  526  docker image prune -a
+  527  docker system info
+  528  docker image pull nginx
+  529  docker system info
+  530  docker container run -itd --name test_cont ubuntu
+  531  docker container ls
+  532  docker container exec -it test_cont bash
+  533  pwd
+  534  ls
+  535  docker container stop test_cont && docker container rm test_cont
+  536  docker volume prune 
+  537  docker container ls
+  538  docker container run -itd --name test_cont --mount src=datavol destination=/mnt ubuntu
+  539  docker container run -itd --name test_cont --mount src=datavol,destination=/mnt ubuntu
+  540  docker volume ls
+  541  docker volume inspect datavol 
+  542  docker container exec -it test_cont bash
+  543  docker container stop test_cont && docker container rm test_cont
+  544  sudo -i
+  545  docker container ls
+  546  sudo apt list --installed docker-ce
+  547  sudo systemctl status docker
+  548  docker container run -d --name test_cont nginx
+  549  docker container ls
+  550  nproc
+  551  free -m
+  552  docker container ls
+  553  docker container update --help
+  554  docker container ls
+  555  docker container update --help
+  556  docker container --help
+  557  history
+  558  history > commands_history
+  562  docker image --help
+  563  sudo systemctl status docker
+  564  docker image ls
+  565  docker container ls
+  566  docker container ls -a
+  567  docker container run -d --name=websvc -p 8005:80 --mount src=datavol,destination=/var/www/html nginx
+  568  docker container ls
+  569  docker system info
+  570  docker version
+  571  docker volume create portainer_data
+  572  docker container run --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+  573  docker container ls -a
+  574  docker container inspect websvc
+  575  sudo systemctl stop docker docker.sock
+  576  sudo systemctl stop docker docker.socket
+  577  docker image ls
+  578  docker container ls
+  579  sudo systemctl restart docker
+  580  docker container ls
+  581  docker container ls -a
+  582  docker container ls -a | grep websvc
+  583  docker system info
+  584  docker image ls
+  585  sudo  -i
+  586  docker container --help
+  587  docker container ls
+  588  docker container start websvc
+  589  docker container ls
+  590  docker container update --restart always --cpus=0.5 --memory=200m websvc
+  591  docker container inspect websvc
+  592  sudo systemctl stop docker docker.socker
+  593  sudo systemctl stop docker docker.socket
+  594  docker image ls
+  595  sudo systemctl restart docker
+  596  docker container ls
+  597  docker container --help
+  598  docker network ls
+  599  docker network inspect bridge
+  600  docker container run -d --name=websvc1 -p 8005:80 --mount src=datavol,destination=/var/www/html --restart always nginx
+  601  docker container run -d --name=websvc1 -p 8006:80 --mount src=datavol,destination=/var/www/html --restart always nginx
+  602  docker container rm websvc1
+  603  docker container run -d --name=websvc1 -p 8006:80 --mount src=datavol,destination=/var/www/html --restart always nginx
+  604  docker container run -d --name=websvc2 -p 8007:80 --mount src=datavol,destination=/var/www/html --restart always nginx
+  605  docker network inspect bridge
+  606  docker network create --driver bridge --subnet=192.168.2.0/24 --gateway=192.168.2.1 edureka_net
+  607  docker network ls
+  608  ifconfig ens5
+  609  ifconfig docker0
+  610  docker network inspect bridge
+  611  sudo sysctl -a | grep -i ip_forwarding
+  612  sudo sysctl -a | grep -i ip_forward
+  613  sudo sysctl -a | grep ip_forward
+  614  sysctl -a
+  615  sysctl -a | grep forward
+  616  ifconfig
+  617  docker network ls
+  618  docker network inspect edureka_net
+  619  docker container run -d --name test_cont ubuntu
+  620  docker container prune -a
+  621  docker container prune
+  622  docker container run -d --name test_cont --network edureka_net ubuntu
+  623  docker container run -d --name websvc4 --network=edureka_net nginx
+  624  docker network inspect edureka_net
+  625  docker container prune
+  626* docker container run -itd --name test_cont --network host ubuntu
+  627  docker network inspect edureka_net
+  628  docker container run -d --name websvc5 --network=host nginx
+  629  netstat -antup | grep 80
+  630  docker container run -d --name websvc6 --network=host nginx
+  631  docker container logs websvc6
+  632  docker container inspect websvc5
+  633  ifconfig ens5
+  634  docker container prune
+  635  docker container ls
+  636  docker container ls -a | egrep 'nginx|ubuntu'
+  637  docker container ls -a | egrep 'nginx|ubuntu' | awk 'print $1'
+  638  docker container ls -a | egrep 'nginx|ubuntu' | awk "print $1"
+  639  docker container ls -a | egrep 'nginx|ubuntu' | awk '{print $1}'
+  640  docker container ls -a | egrep 'nginx|ubuntu' | awk '{print $1}' | xargs docker container stop
+  641  docker container prune
+  642  docker network prune
+  643  docker image prune -a
+  644  docker image ls
+  645  docker container ls
+  646  docker volume ls
+  647  docker volume prune
+  648  docker volume ls
+  649  sudo apt list docker-compose-plugin
+  650  which docker-compose
+  651  docker-compose --version
+  652  mkdir wordpress
+  653  cd wordpress/
+  654  ls
+  655  pwd
+  656  ls
+  657  vi docker-compose.yaml
+  658  docker-compose --help
+  659  pwd
+  660  ls
+  661  docker-compose up -d
+  662  vi docker-compose.yaml
+  663  docker-compose up -d
+  664  docker container ls
+  665  docker-compose down
+  666  docker container ls
+  667  cat docker-compose.yaml
+  668  docker volume ls
+  669  docker-compose up -d
+  670  docker container ls
+  671  sudo -i
+  672  ls
+  673  cd ..
+  674  ls
+  675  cd tomcat/
+  676  ls
+  677  cat Dockerfile
+  678  pwd
+  679  cd
+  680  clear
+  681  hostname
+  682  sudo systemctl status docker
+  683  docker system info
+  684  hostname
+  685  docker swarm init
+  686  hostname
+  687  docker node ls
+  688  docker system info
+  689  docker node ls
+  690  docker service create --name mysvc --replicas 3 -p 9080:80 nginx
+  691  docker service ls
+  692  docker service ps websvc
+  693  docker service ps mysvc
+  694  docker container ls
+  695  docker node ls
+  696  docker service ps
+  697  docker service ps mysvc
+  698  docker container ls
+  699  docker node ls
+  700  history
+  701  pwd
+  702  ls
+  703  cat commands_history
+
+edureka@kmaster:~/wordpress$ cat docker-compose.yaml
+version: '3.0'
+services:
+        db:
+          image: mysql:5.7
+          volumes:
+            - db_data:/var/lib/mysql
+          restart: always
+          environment:
+            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+
+        wordpress:
+           image: wordpress
+           ports:
+            - "8000:80"
+           restart: always
+           environment:
+             WORDPRESS_DB_HOST: db:3306
+             WORDPRESS_DB_USER: wordpress
+             WORDPRESS_DB_PASSWORD: wordpress
+
+volumes:
+   db_data:
+

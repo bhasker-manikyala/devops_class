@@ -1,0 +1,53 @@
+$ docker image ls
+$ docker image build -t custom_apache .
+
+$ docker login  ---> DockerID/Password
+$ docker image push edurekadevops/edureka-porject:custom_apache
+$ docker image pull nginx  --- Download Nginx Official image from Public registry
+$ docker image history nginx  --- Layered arch of images(Dockerfile)
+$ docker image inspect nginx  --- Properties of an image
+$ docker image rm nginx
+$ docker image prune -a  -- Remove unused images 
+
+
+Dangling images or broken images  --- ?
+
+How do we remove
+
+
+
+
+$ docker container ls  --- Active Containers
+$ docker container ls -a  --- All container including active, inactive, created etc..
+$ docker container run -d --name=websvc -p 8005:80 --mount src=datavol,destination=/var/www/html --restart always nginx
+$ docker container inspect websvc
+$ docker container stop websvc
+$ docker container rm websvc
+$ docker container logs websvc
+# docker container exec -it websvc bash  
+  Ctrl+p+q
+$ 
+
+
+
+
+$ docker volume ls
+$ docker volume create datavol
+$ docker volume inspect datavol
+
+
+
+$ docker network ls
+$ docker network inspect bridge
+
+
+
+
+
+WebUI for Docker
+
+
+Docker Desktop for Windows, Mac 
+
+Kitematic for Linux  --- Deprecated
+
